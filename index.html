@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Getting Started ReactJs</title>
+  <link rel="stylesheet" href="../lib/bootstrap.min.css" type="text/css" />
+  <script src="../lib/react.js"></script>
+  <script src="../lib/JSXTransformer.js"></script>
+  <script type="text/javascript" src="../lib/jquery.min.js" charset="utf-8"></script>
+  <!--
+  <script src="../lib/es5-shim.min.js"></script>
+  <script src="../lib/es5-sham.min.js"></script>
+  <script src="../lib/console-polyfill.js"></script>
+
+
+  <!--
+  
+  <script type="text/javascript" src="../lib/bootstrap.min.js" charset="utf-8"></script>
+-->
+</head>
+<body style="margin:5px;">
+    <div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-default">
+				<div class="panel-heading">
+				  <h3 class="panel-title" id="title-side">Resume</h3>
+				</div>
+				<div class="panel-body">
+					<div id="content-side"></div>
+				</div>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="panel panel-default">
+				<div class="panel-heading">
+				  <h3 class="panel-title" id="title"></h3>
+				</div>
+				<div class="panel-body">
+					<div id="content"></div>
+				</div>
+				<div class="panel-footer">
+				  <span>Copyright &copy; 2015 All rights reserved</span>
+				</div>
+				</div>
+			</div>			
+		</div>
+    </div>
+    <script type="text/jsx" src="Table.jsx"></script>
+    <script type="text/jsx" src="RowGroup.jsx"></script>
+    <script type="text/jsx" src="Row.jsx"></script>
+	<script type="text/jsx" src="View.jsx"></script>
+	<script type="text/jsx" src="Update.jsx"></script>
+	<script type="text/jsx" src="Create.jsx"></script>
+	<script type="text/jsx" src="Side.jsx"></script>
+	
+    <script type="text/jsx">
+	var serviceUrl = 'http://localhost/react/crud/services/';
+	index= function(){
+		Table = loadTable();
+		RowGroup = loadRowGroup();
+		Row = loadRow();
+		content = React.createElement(Table)
+		React.render(<span>Index</span>,document.getElementById('title'));
+		React.render(content,document.getElementById('content'));
+	}
+	view = function(id){
+		View = loadView(id);
+		content = React.createElement(View)
+		React.render(<span>View #{id}</span>,document.getElementById('title'));
+		React.render(content,document.getElementById('content'));	  
+	}
+	update = function(id){
+		Update = loadUpdate(id);
+		content = React.createElement(Update)
+		React.render(<span>Update #{id}</span>,document.getElementById('title'));
+		React.render(content,document.getElementById('content'));	  
+	}
+	create = function(){
+		Create = loadCreate();
+		content = React.createElement(Create)
+		React.render(<span>Create</span>,document.getElementById('title'));
+		React.render(content,document.getElementById('content'));	  
+	}
+	
+	index();
+	
+	side= function(){
+		Side = loadSide();
+		sideContent = React.createElement(Side)
+		React.render(sideContent,document.getElementById('content-side'));
+	}
+	side();
+    </script>
+</body>
+</html>
